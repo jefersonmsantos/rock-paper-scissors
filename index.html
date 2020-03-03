@@ -1,0 +1,75 @@
+<html>
+    <script>
+        function computerplay(){
+            possiblePlays=["Rock","Paper","Scissors"];
+            play=Math.floor(Math.random()*3);
+            return possiblePlays[play];
+        }
+
+        
+
+        function playRound(playerSelection, computerSelection = computerplay()){
+            playerPlay = playerSelection.substring(0,1).toUpperCase() + playerSelection.substring(1,).toLowerCase();
+            
+            switch (true) {
+                case (playerPlay == "Rock" && computerSelection == "Paper"):
+                    return "You Lose! " + computerSelection + " beats " + playerPlay;
+                    break
+                case (playerPlay == "Paper" && computerSelection == "Rock"):
+                    return "You Win! " + playerPlay + " beats " + computerSelection;
+                break
+                case (playerPlay == "Paper" && computerSelection == "Scissors"):
+                    return "You Lose! " + computerSelection + " beats " + playerPlay;
+                break
+                case (playerPlay == "Scissors" && computerSelection == "Paper"):
+                    return "You Win! " + playerPlay + " beats " + computerSelection;
+                break
+                case (playerPlay == "Scissors" && computerSelection == "Rock"):
+                    return "You Lose! " + computerSelection + " beats " + playerPlay;
+                break
+                case (playerPlay == "Rock" && computerSelection == "Scissors"):
+                    return "You Win! " + playerPlay + " beats " + computerSelection;
+                break
+                default:
+                    return "It's a draw";
+
+
+            }
+
+        }
+
+        function game(){
+            playerPoints=0;
+            computerPoints=0;
+            plays = 0;
+
+            while (plays<5) {
+            
+                playerChoice = prompt('Rock, Paper or Scissors?');
+                
+                if (playerChoice == "Rock" || playerChoice ==  "Paper" || playerChoice ==  "Scissors") {
+                    
+                    roundResult=playRound(playerChoice,);
+                    
+                    if (roundResult.substring(0,8)=="You Lose") {
+                        computerPoints++;
+                        console.log(roundResult + ". Game score: Player " + playerPoints + " X " + computerPoints + " Computer");
+                        
+                    }else if (roundResult.substring(0,7)=="You Win") {
+                            playerPoints++;
+                            console.log(roundResult + ". Game score: Player " + playerPoints + " X " + computerPoints + " Computer");
+                    } else{
+                        console.log(roundResult + ". Game score: Player " + playerPoints + " X " + computerPoints + " Computer");
+                    }
+                    plays++;
+                }
+
+            }
+
+            console.log("Final score: Player " + playerPoints + " X " + computerPoints + " Computer")
+        }
+
+
+    </script>
+
+</html>
